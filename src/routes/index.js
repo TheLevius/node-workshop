@@ -1,11 +1,14 @@
 import {
 	Router
-} from 'express'
+} from 'express';
+import rootController from '../controllers/root-controller.js';
 
 const rootRouter = Router();
 
-rootRouter.use('/', (req, res) => {
-	res.send('Welcome!');
-})
+rootRouter.get('/', rootController.index);
+rootRouter.get('/increment', rootController.increment);
+rootRouter.post('/msg', rootController.save);
+rootRouter.get('/msg', rootController.render);
+rootRouter.delete('/msg', rootController.remove);
 
-export default rootRouter
+export default rootRouter;
