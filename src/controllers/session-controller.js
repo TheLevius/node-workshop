@@ -1,12 +1,6 @@
-class RootController {
+class SessionController {
 	constructor() {
 
-	}
-	async index(req, res) {
-		res.json({
-			increment: '/increment',
-			msg: '/msg'
-		})
 	}
 
 	async increment(req, res) {
@@ -47,4 +41,4 @@ class RootController {
 	}
 }
 
-export default new RootController()
+export default new SessionController()

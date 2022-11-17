@@ -3,7 +3,10 @@ import session from 'express-session';
 import * as dotenv from 'dotenv';
 import rootRouter from './routes/index.js';
 dotenv.config();
-const PORT = process.env.SERVER_PORT;
+export const PORT = process.env.SERVER_PORT;
+export const SESSION_KEY = process.env.SECRET_SESSION_KEY;
+export const HASH_KEY = process.env.SECRET_HASH_KEY;
+
 const app = express();
 
 app.use(express.json());
@@ -11,7 +14,7 @@ app.use(express.urlencoded({
 	extended: true
 }))
 app.use(session({
-	secret: process.env.SECRET_SESSION_KEY,
+	secret: SESSION_KEY,
 	resave: false,
 	saveUninitialized: false,
 }))

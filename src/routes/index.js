@@ -1,14 +1,14 @@
 import {
 	Router
 } from 'express';
-import rootController from '../controllers/root-controller.js';
+import authRouter from './auth-router.js';
+import sessionRouter from './session-router.js';
+import rootController from '../controllers/index.js';
 
 const rootRouter = Router();
 
 rootRouter.get('/', rootController.index);
-rootRouter.get('/increment', rootController.increment);
-rootRouter.post('/msg', rootController.save);
-rootRouter.get('/msg', rootController.render);
-rootRouter.delete('/msg', rootController.remove);
+rootRouter.use('/session', sessionRouter);
+rootRouter.use('/auth', authRouter);
 
 export default rootRouter;
